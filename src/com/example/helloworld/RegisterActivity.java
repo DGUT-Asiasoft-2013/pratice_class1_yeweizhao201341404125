@@ -56,26 +56,26 @@ public class RegisterActivity extends Activity {
 		super.onResume();
 
 		fragInputCellAccount.setLabelText("账户名");{
-			fragInputCellAccount.setHintText("请输入账户名");	
+			fragInputCellAccount.setText("136147");	
 		}
 
 
 		fragInputCellPassword.setLabelText("密码");{
-			fragInputCellPassword.setHintText("请输入密码");
+			fragInputCellPassword.setText("136147");	
 			fragInputCellPassword.setIsPassword(true);	
 		}
 
 		fragInputCellPasswordRepeat.setLabelText("重复密码");{
-			fragInputCellPasswordRepeat.setHintText("请重复输入密码");
+			fragInputCellPasswordRepeat.setText("136147");	
 			fragInputCellPasswordRepeat.setIsPassword(true);	
 		}
 
 		fragInputName.setLabelText("昵称");{
-			fragInputName.setHintText("请输入昵称");
+			fragInputName.setText("136147");	
 		}
 
 		fragInputEmailAddress.setLabelText("电子邮件");{
-			fragInputEmailAddress.setHintText("请输入电子邮箱");
+			fragInputEmailAddress.setText("136147");	
 		}
 	}
 

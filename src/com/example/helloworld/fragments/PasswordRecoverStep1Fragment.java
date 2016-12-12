@@ -1,6 +1,7 @@
 package com.example.helloworld.fragments;
 
 import com.example.helloworld.R;
+import com.example.helloworld.api.Server;
 import com.example.helloworld.fragments.inputcells.SimpleTextInputCellFragment;
 
 import android.app.Fragment;
@@ -8,9 +9,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import okhttp3.OkHttpClient;
 
 public class PasswordRecoverStep1Fragment extends Fragment {
-	SimpleTextInputCellFragment fragEmail;
+    SimpleTextInputCellFragment fragEmail;
 	View view;
 	
 	@Override
@@ -29,7 +31,6 @@ public class PasswordRecoverStep1Fragment extends Fragment {
 				}
 			});	
 		}
-		
 		return view;
 	}
 	
@@ -38,7 +39,11 @@ public class PasswordRecoverStep1Fragment extends Fragment {
 		super.onResume();
 		
 		fragEmail.setLabelText("◊¢≤·” œ‰");
-		fragEmail.setHintText(" ‰»Î◊¢≤·” œ‰µÿ÷∑");
+		fragEmail.setText("136147");
+	}
+	public  String getText() {
+		
+		return fragEmail.getText();
 	}
 	
 	public static interface OnGoNextListener{
@@ -52,7 +57,10 @@ public class PasswordRecoverStep1Fragment extends Fragment {
 	}
 	
 	void goNext(){
+		
+		
 		if(onGoNextListener!=null){
+			
 			onGoNextListener.onGoNext();
 		}
 	}

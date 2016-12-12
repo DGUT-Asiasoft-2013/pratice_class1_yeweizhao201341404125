@@ -26,6 +26,9 @@ public class SimpleTextInputCellFragment extends BaseInputCellFragment {
 		edit = (EditText) view.findViewById(R.id.edit);
 		return view;
 	}
+	public void setText(String edittext){
+		edit.setText(edittext);
+	}
 	
 	public void setLabelText(String labelText){
 		label.setText(labelText);

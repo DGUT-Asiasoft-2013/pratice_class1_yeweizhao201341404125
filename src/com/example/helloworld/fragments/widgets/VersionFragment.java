@@ -24,7 +24,7 @@ public class VersionFragment extends Fragment {
 		
 		try {
 			PackageInfo appinf = pkgm.getPackageInfo(getActivity().getPackageName(), 0);
-			textVersion.setText(appinf.packageName + " " + appinf.versionName);
+			textVersion.setText("136147" + " " + appinf.versionName);
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 			textVersion.setText("ERROR");

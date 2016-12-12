@@ -68,9 +68,9 @@ public class LoginActivity extends Activity {
 		super.onResume();
 
 		fragAccount.setLabelText("账户名");
-		fragAccount.setHintText("请输入账户名");
+		fragAccount.setText("136147");
 		fragPassword.setLabelText("密码");
-		fragPassword.setHintText("请输入密码");
+		fragPassword.setText("136147");
 		fragPassword.setIsPassword(true);
 	}
 
@@ -101,28 +101,59 @@ public class LoginActivity extends Activity {
 		client.newCall(request).enqueue(new Callback() {
 
 			@Override
+
 			public void onResponse(Call arg0, Response arg1) throws IOException {
-				
-				final String responseString = arg1.body().string();
-				ObjectMapper mapper = new ObjectMapper();
-				final User user = mapper.readValue(responseString, User.class);
-				
-				runOnUiThread(new Runnable() {
-					public void run() {
+				try {
+					final String responseString = arg1.body().string();
+					ObjectMapper mapper = new ObjectMapper();
+					final User user = mapper.readValue(responseString, User.class);
+					if(user != null){
 						dlg.dismiss();
-						new AlertDialog.Builder(LoginActivity.this)
-						.setMessage("Hello,"+user.getName())
-//						.setMessage(responseString)
-						.setPositiveButton("OK", new DialogInterface.OnClickListener(){
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								Intent itnt = new Intent(LoginActivity.this, HelloWorldActivity.class);
-								startActivity(itnt);	
-							}	
-						})
-						.show();
+						runOnUiThread(new Runnable() {
+							public void run() {
+								dlg.dismiss();
+								new AlertDialog.Builder(LoginActivity.this)
+								.setTitle("登录成功")
+								.setMessage("欢迎用户："+user.getAccount())
+								.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog, int which) {
+										Intent iten = new Intent(LoginActivity.this,HelloWorldActivity.class);
+										startActivity(iten);
+									}
+								})
+								.show();
+							}
+						});
+
 					}
-				});
+					else{
+						runOnUiThread(new Runnable() {
+							public void run() {
+								dlg.dismiss();
+								new AlertDialog.Builder(LoginActivity.this)
+								.setTitle("提示")
+								.setMessage("登录失败!")
+								.setPositiveButton("确定",null)
+								.show();
+							}
+						});
+
+					}
+				} catch (Exception e) {
+					runOnUiThread(new Runnable() {
+						public void run() {
+							dlg.dismiss();
+							new AlertDialog.Builder(LoginActivity.this)
+							.setTitle("提示")
+							.setMessage("登录失败!")
+							.setPositiveButton("确定",null)
+							.show();
+						}
+					});
+					e.printStackTrace();
+				}
 			}
 
 			@Override
