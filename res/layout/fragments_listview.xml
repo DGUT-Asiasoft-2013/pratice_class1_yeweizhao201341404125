@@ -1,29 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="80dp"
+    android:weightSum="1" >
+
+     <com.example.helloworld.fragments.widgets.AvatarView
+        android:id="@+id/list_contentavatar"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.3"
+        android:gravity="center" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1" >
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_weight="0.7"
+        android:orientation="vertical" >
 
-        <ImageView
-            android:layout_width="0dp"
-            android:scaleType="centerInside"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+        <TextView
+            android:id="@+id/list_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="0.3"
-            android:gravity="center"
-            android:src="@drawable/ic_launcher" />
+            android:gravity="left"
+            android:hint="标题"
+            android:paddingTop="5dp"
+            android:paddingLeft="20dp"
+            android:textSize="20sp" />
+
 
         <TextView
             android:id="@+id/list_text"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:gravity="center"
-            android:text="dsaad" />
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0.2"
+            android:gravity="center_horizontal"
+            android:hint="内容" />
+
+         <TextView
+            android:id="@+id/list_creatDate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.2"
+            android:gravity="right"
+            android:hint="创建时间" />
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

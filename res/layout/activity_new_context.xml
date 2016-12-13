@@ -4,8 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
+
     <fragment
-        android:id="@+id/context1"
+        android:id="@+id/context"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         class="com.example.helloworld.fragments.pages.NewContextFragment"

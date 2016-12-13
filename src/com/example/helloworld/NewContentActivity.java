@@ -28,7 +28,7 @@ public class NewContentActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_context);
 
-		ncf = (NewContextFragment) getFragmentManager().findFragmentById(R.id.context1);
+		ncf = (NewContextFragment) getFragmentManager().findFragmentById(R.id.context);
 		
 		findViewById(R.id.btn_send).setOnClickListener(new View.OnClickListener() {
 
@@ -67,7 +67,7 @@ public class NewContentActivity extends Activity {
 					public void run() {
 						new AlertDialog.Builder(NewContentActivity.this)
 						.setTitle("发送成功")
-						.setMessage(title)
+						.setMessage("文章发送成功!")
 						.setPositiveButton("确定", new DialogInterface.OnClickListener() {
 
 							@Override
@@ -104,7 +104,6 @@ public class NewContentActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		
 		ncf.setTitle("1111111");
 		ncf.setText("136147hhhhhhhhhh136147");
 	}
