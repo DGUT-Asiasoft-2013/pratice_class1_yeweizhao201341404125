@@ -33,23 +33,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
+        android:layout_marginBottom="5dp"
         android:padding="2dp"
         android:text="忘记密码？"
-        android:layout_marginBottom="5dp"
         android:textColor="#00f" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1" >
-       
-         <Button
+
+        <Button
             android:id="@+id/btn_register"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:text="注册" />
-          <Button
+
+        <Button
             android:id="@+id/btn_login"
             android:layout_width="0dp"
             android:layout_height="match_parent"

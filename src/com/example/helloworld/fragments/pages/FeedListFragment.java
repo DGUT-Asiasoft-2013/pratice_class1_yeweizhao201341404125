@@ -90,11 +90,13 @@ public class FeedListFragment extends Fragment {
 
 			TextView context = (TextView) view.findViewById(R.id.list_text);
 			TextView title = (TextView) view.findViewById(R.id.list_title);
+			TextView name = (TextView) view.findViewById(R.id.list_name);
 			AvatarView avatar = (AvatarView) view.findViewById(R.id.list_contentavatar);
 			TextView list_creatDate = (TextView) view.findViewById(R.id.list_creatDate);
 			Article article = data.get(position);
 			context.setText(article.getText());
 			title.setText(article.getTitle());
+			name.setText(article.getAuthorName());
 			list_creatDate.setText(DateFormat.format("yyyy-MM-dd hh:mm", article.getCreateDate()).toString());
 			avatar.load(Server.serverAddress + article.getAuthorAvatar());
 			return view;
@@ -135,13 +137,14 @@ public class FeedListFragment extends Fragment {
 				try {
 
 					//取出Page数据s
-					Page<Article> data = new ObjectMapper()
+					final Page<Article> data = new ObjectMapper()
 							.readValue(arg1.body().string(), new TypeReference<Page<Article>>() {
 							});
-					FeedListFragment.this.page = data.getNumber();
-					FeedListFragment.this.data = data.getContent();
+
 					getActivity().runOnUiThread(new Runnable() {
 						public void run() {
+							FeedListFragment.this.page = data.getNumber();
+							FeedListFragment.this.data = data.getContent();
 							listAdapter.notifyDataSetInvalidated();
 						}
 					});					
@@ -184,11 +187,11 @@ public class FeedListFragment extends Fragment {
 
 
 	}
-	
+
 	void loadmore(){
 		btnLoadMore.setEnabled(false);
 		textLoadMore.setText("载入中…");
-		
+
 		Request request = Server.requestBuilderWithApi("feeds/"+(page+1)).get().build();
 		Server.getSharedClient().newCall(request).enqueue(new Callback() {
 			@Override
@@ -199,7 +202,7 @@ public class FeedListFragment extends Fragment {
 						textLoadMore.setText("加载更多");
 					}
 				});
-				
+
 				try{
 					Page<Article> feeds = new ObjectMapper().readValue(arg1.body().string(), new TypeReference<Page<Article>>() {});
 					if(feeds.getNumber()>page){
@@ -209,7 +212,7 @@ public class FeedListFragment extends Fragment {
 							data.addAll(feeds.getContent());
 						}
 						page = feeds.getNumber();
-						
+
 						getActivity().runOnUiThread(new Runnable() {
 							public void run() {
 								listAdapter.notifyDataSetChanged();
@@ -220,7 +223,7 @@ public class FeedListFragment extends Fragment {
 					ex.printStackTrace();
 				}
 			}
-			
+
 			@Override
 			public void onFailure(Call arg0, IOException arg1) {
 				getActivity().runOnUiThread(new Runnable() {
@@ -231,14 +234,17 @@ public class FeedListFragment extends Fragment {
 				});
 			}
 		});
-}
+	}
 
 	void onItemClicked(int position){
+		Article article = data.get(position);
+
 		String list_contenttext = data.get(position).getText();
 		String list_contenttitle = data.get(position).getTitle();
 		String list_contentname = data.get(position).getAuthorName();
 		String list_creatDate = DateFormat.format("yyyy-MM-dd hh:mm", data.get(position).getCreateDate()).toString();
 		String list_contentavatar  = data.get(position).getAuthorAvatar();
+
 
 		Intent itnt = new Intent(getActivity(), FeedContentActivity.class);
 		itnt.putExtra("list_contenttext", list_contenttext);
@@ -246,6 +252,7 @@ public class FeedListFragment extends Fragment {
 		itnt.putExtra("list_contentname", list_contentname);
 		itnt.putExtra("list_creatDate", list_creatDate);
 		itnt.putExtra("list_contentavatar", list_contentavatar);
+		itnt.putExtra("article", article);
 		//new ObjectMapper().readValue(src, Map.class);
 
 		startActivity(itnt);

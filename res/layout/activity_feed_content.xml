@@ -1,77 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:weightSum="1" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-    <com.example.helloworld.fragments.widgets.AvatarView
-        android:id="@+id/list_contentavatar"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="30dp" />
-
-    <TextView
-        android:id="@+id/list_contentname"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:gravity="left"
-        android:hint="作者"
-        android:padding="20dp"
-        android:textSize="20sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/darker_gray" />
-
-    <TextView
-        android:id="@+id/list_contenttitle"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
-        android:gravity="center"
-        android:hint="标题"
-        android:padding="5dp"
-        android:textSize="18sp" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/darker_gray" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.2" >
 
         <TextView
-            android:id="@+id/list_contenttext"
+            android:id="@+id/list_zan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:hint="点赞数" />
+
+        <Button
+            android:id="@+id/dianzan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:text="点赞" />
+
+        <Button
+            android:id="@+id/btn_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:text="评论" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1" >
+
+        <com.example.helloworld.fragments.widgets.AvatarView
+            android:id="@+id/list_contentavatar"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.4"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/list_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:hint="作者" />
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.4"
-            android:gravity="left"
-            android:hint="内容"
-            android:padding="15dp" />
-    </ScrollView>
+            android:scrollbars="vertical" >
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@android:color/darker_gray" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="0.6"
+                android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/list_contentcreattime"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_weight="0.2"
-        android:gravity="right"
-        android:hint="创建时间"
-        android:paddingRight="15dp"
-        android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/list_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2"
+                    android:gravity="left"
+                    android:hint="标题"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="5dp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/list_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.2"
+                    android:gravity="center_horizontal"
+                    android:hint="内容" />
+
+                <TextView
+                    android:id="@+id/list_creatDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.2"
+                    android:gravity="right"
+                    android:hint="创建时间" />
+            </LinearLayout>
+        </ScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@android:color/darker_gray" />
+
+        <ListView
+            android:id="@+id/listview_comment"
+            android:layout_width="match_parent"
+            android:layout_height="270dp" >
+        </ListView>
+    </LinearLayout>
 
 </LinearLayout>
