@@ -35,8 +35,10 @@ import okhttp3.Response;
 
 public class FeedContentActivity extends Activity {
 	View view;
+	
 	TextView textLoadMore;
 	View btnLoadMore;
+	
 	private boolean isLiked;
 	TextView zan;
 	ListView listView;
@@ -213,7 +215,6 @@ public class FeedContentActivity extends Activity {
 	void reload(){
 		reloadLikes();
 		checkLiked();
-
 	}
 
 	private void onsendcomment() {
@@ -229,6 +230,7 @@ public class FeedContentActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		reload();
 		onresume();
 		oncommentlist();
 	}

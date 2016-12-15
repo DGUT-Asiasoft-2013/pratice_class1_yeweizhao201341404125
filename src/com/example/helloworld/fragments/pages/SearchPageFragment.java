@@ -162,7 +162,7 @@ public class SearchPageFragment extends Fragment {
 			public void onResponse(final Call arg0, Response arg1) throws IOException {
 				try {
 
-					//取出Page数据s
+					//取出Page数据
 					final Page<Article> data = new ObjectMapper()
 							.readValue(arg1.body().string(), new TypeReference<Page<Article>>() {
 							});
