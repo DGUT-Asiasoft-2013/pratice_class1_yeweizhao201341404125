@@ -171,21 +171,6 @@ public class FeedListFragment extends Fragment {
 			}
 		});
 
-		//		PageArticle page = new PageArticle();
-		//		page.getContent();
-		//		page.getNumber();
-		//		Article article = (Article) page.getContent();
-		//		article.getId();
-		//		article.getAuthorName();
-		//		article.getTitle();
-		//		article.getText();
-		//		article.getCreateDate();
-		//		article.getAuthorAvatar();
-
-
-
-
-
 	}
 
 	void loadmore(){
