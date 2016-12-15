@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1F5B8D"
+    android:background="@drawable/p"
     tools:context="${relativePackage}.${activityClass}" >
 
     <TextView

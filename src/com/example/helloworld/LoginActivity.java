@@ -119,6 +119,7 @@ public class LoginActivity extends Activity {
 
 									@Override
 									public void onClick(DialogInterface dialog, int which) {
+										finish();
 										Intent iten = new Intent(LoginActivity.this,HelloWorldActivity.class);
 										startActivity(iten);
 									}

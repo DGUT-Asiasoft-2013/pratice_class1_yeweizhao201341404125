@@ -2,7 +2,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/p" >
 
     <View
         android:layout_width="0dp"
@@ -33,7 +34,7 @@
                 android:layout_height="wrap_content"
                 class="com.example.helloworld.fragments.inputcells.SimpleTextInputCellFragment"
                 tools:layout="@layout/fragment_inputcell_simpletext" />
-            
+
             <fragment
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
